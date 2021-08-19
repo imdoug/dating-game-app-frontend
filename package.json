@@ -1,6 +1,7 @@
 {
   "name": "dating-game-app-frontend",
   "version": "0.1.0",
+  "lockfileVersion": 1,
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",

@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 
 const Edit = ()=>{
-    emptyUser = {...user}
+    let emptyUser = {...user}
     const [user, setUser] = useState(emptyUser)
     const handleChange  = (event) =>{
         setUser({...user, [event.target.name]: event.target.value})

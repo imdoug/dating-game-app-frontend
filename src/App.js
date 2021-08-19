@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import Create from './components/Create_user'
+import Edit from './components/Edit_user'
 
 function App() {
   let [users, setUsers] = useState({})
@@ -16,7 +17,7 @@ function App() {
   useEffect(()=>{
     // getUsers()
   })
-  const handleCreate = () =>{
+  const handleCreate = (user) =>{
     axios
       .post('http://localhost:8000')
       .then((response)=>{
@@ -24,10 +25,22 @@ function App() {
         getUsers()
       })
   }
+  const handleUpdate = (user) =>{
+    axios
+      .post('http://localhost:8000')
+      .then((response)=>{
+        console.log(response)
+        getUsers()
+      })
+  }
+  const handleDelete = ()=>{
+    
+  }
   return (
     <>
       <h1>Welcome to The Dating Game!</h1>
       <Create handleCreate={handleCreate}/>
+      <Edit handleUpdate={handleUpdate}/>
     </>
   )
 }

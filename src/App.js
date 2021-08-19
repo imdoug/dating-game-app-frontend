@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect} from 'react'
+import axios from 'axios'
+import Create from './components/Create_user'
+import Edit from './components/Edit_user'
 
 function App() {
+  let [users, setUsers] = useState({})
+
+  const getUsers = ()=>{
+    console.log('users came here')
+  //     axios.get('http://localhost:8000')
+  //     .then((repsonse)=> setUsers(response.data),
+  //     (err) => console.error(err)
+  //     )
+  //     .catch((error)=> console.error(erro))
+  }
+  useEffect(()=>{
+    // getUsers()
+  })
+  const handleCreate = (user) =>{
+    axios
+      .post('http://localhost:8000')
+      .then((response)=>{
+        console.log(response)
+        getUsers()
+      })
+  }
+  const handleUpdate = (user) =>{
+    axios
+      .post('http://localhost:8000')
+      .then((response)=>{
+        console.log(response)
+        getUsers()
+      })
+  }
+  const handleDelete = ()=>{
+    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>Welcome to The Dating Game!</h1>
+      <Create handleCreate={handleCreate}/>
+      <Edit handleUpdate={handleUpdate}/>
+    </>
+  )
 }
 
-export default App;
+export default App

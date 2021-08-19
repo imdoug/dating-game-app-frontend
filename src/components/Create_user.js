@@ -9,7 +9,7 @@ const Create = (props) =>{
     const handleSubmit = (event) =>{
         event.preventDefault()
         console.log(user)
-        // props.handleCreate(user)
+        props.handleCreate(user)
     }
     return (
         <>

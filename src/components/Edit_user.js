@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 
-const Edit = ()=>{
-    let  emptyUser = {username: '', password: ''}
+const Edit = (props)=>{
+    let  emptyUser = {...props.user}
     const [user, setUser] = useState(emptyUser)
     const handleChange  = (event) =>{
         setUser({...user, [event.target.name]: event.target.value})
@@ -9,7 +9,7 @@ const Edit = ()=>{
     const handleSubmit = (event) =>{
         event.preventDefault()
         console.log(user)
-        // props.handleUpdate(user)
+        props.handleUpdate(user)
     }    
     return(
         <>
@@ -17,7 +17,7 @@ const Edit = ()=>{
         <summary>Edit User Form</summary>
             <form onSubmit={handleSubmit}>
                 <label>Name: </label>
-                <input type="text" name="username" onChange={handleChange}/>
+                <input type="text" name="username" onChange={handleChange} defaultValue={props.user.username}/>
                 <br/>
                 <br/>
                 <label>Password</label>

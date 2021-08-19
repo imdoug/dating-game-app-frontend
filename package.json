@@ -1,7 +1,6 @@
 {
   "name": "dating-game-app-frontend",
-  "version": "0.1.0",
-  "lockfileVersion": 1,
+  "version": "1.0.0",
   "engines": {
     "node": "v14.17.1"
   },

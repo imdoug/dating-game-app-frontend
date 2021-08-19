@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React,{useState} from "react"
 
-const Create = (props) =>{
+const Edit = ()=>{
     let  emptyUser = {username: '', password: ''}
     const [user, setUser] = useState(emptyUser)
     const handleChange  = (event) =>{
@@ -9,12 +9,12 @@ const Create = (props) =>{
     const handleSubmit = (event) =>{
         event.preventDefault()
         console.log(user)
-        // props.handleCreate(user)
-    }
-    return (
+        // props.handleUpdate(user)
+    }    
+    return(
         <>
         <details>
-            <summary>New User Form</summary>
+        <summary>Edit User Form</summary>
             <form onSubmit={handleSubmit}>
                 <label>Name: </label>
                 <input type="text" name="username" onChange={handleChange}/>
@@ -24,11 +24,11 @@ const Create = (props) =>{
                 <input type="password" name="password"  onChange={handleChange}/>
                 <br/>
                 <br/>
-                <input type="submit" value="CREATE NEW USER"/>
+                <input type="submit" value="EDIT USER"/>
             </form>
-      </details>
+        </details>
         </>
     )
 }
 
-export default Create
+export default Edit

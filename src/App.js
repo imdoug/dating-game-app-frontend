@@ -10,10 +10,10 @@ function App() {
     console.log('users came here')
       axios
       .get('https://datinggameapp.herokuapp.com/api/users')
-      .then((repsonse)=> setUsers(response.data),
+      .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
-      .catch((error)=> console.error(erro))
+      .catch((error)=> console.error(error))
   }
   useEffect(()=>{
      getUsers()

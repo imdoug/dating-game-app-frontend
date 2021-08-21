@@ -11,12 +11,13 @@ const Login = (props) =>{
         console.log(user)
         props.handleLogin(event, user)
     }
+
     return (
         <>
         <details>
         <summary>Login</summary>
             <form onSubmit={handleSubmit}>
-            <label>Email: </label>
+            <label>Username: </label>
             <input type="text" name="username" onChange={handleChange}/>
             <br />
             <label>Password: </label>

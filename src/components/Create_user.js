@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 const Create = (props) =>{
-    let  emptyUser = {email: '', password: ''}
+    let  emptyUser = {username: '', password: '', age: '', fav_console: '',image: '',name: '',fav_games: []}
     const [user, setUser] = useState(emptyUser)
     const handleChange  = (event) =>{
         setUser({...user, [event.target.name]: event.target.value})
@@ -16,8 +16,8 @@ const Create = (props) =>{
         <details>
             <summary>New User Form</summary>
             <form onSubmit={handleSubmit}>
-                <label>Email: </label>
-                <input type="text" name="email" onChange={handleChange}/>
+                <label>Username: </label>
+                <input type="text" name="username" onChange={handleChange}/>
                 <br/>
                 <br/>
                 <label>Password</label>

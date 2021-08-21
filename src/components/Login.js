@@ -17,7 +17,7 @@ const Login = (props) =>{
         <summary>Login</summary>
             <form onSubmit={handleSubmit}>
             <label>Email: </label>
-            <input type="text" name="email" onChange={handleChange}/>
+            <input type="text" name="username" onChange={handleChange}/>
             <br />
             <label>Password: </label>
             <input type="password" name="password" onChange={handleChange}/>

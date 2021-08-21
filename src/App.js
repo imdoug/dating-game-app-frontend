@@ -21,7 +21,6 @@ function App() {
   useEffect(()=>{
     //creating a getting the local storage information after a refresh
     const data = localStorage.getItem("current-user")
-    console.log(data)
     // if there is user inside the local storage item we'll set that user to current user state
     if (data){
       //parsing the data into JSON

@@ -16,7 +16,7 @@ const Edit = (props)=>{
         <details>
         <summary>Edit User Form</summary>
             <form onSubmit={handleSubmit}>
-                <label>Name: </label>
+                <label>Username: </label>
                 <input type="text" name="username" onChange={handleChange} defaultValue={props.user.username}/>
                 <br/>
                 <br/>

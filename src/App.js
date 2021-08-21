@@ -19,8 +19,22 @@ function App() {
       .catch((error)=> console.error(error))
   }
   useEffect(()=>{
-     getUsers()
+    //creating a getting the local storage information after a refresh
+    const data = localStorage.getItem("current-user")
+    console.log(data)
+    // if there is user inside the local storage item we'll set that user to current user state
+    if (data){
+      //parsing the data into JSON
+      setCurrentUser(JSON.parse(data))
+    }
+    getUsers()
   },[])
+  // local storage 
+  useEffect(()=>{
+    //creating a local storage item where we'll receive our user data after a login
+    //converting to string to be readable on the local storage
+    localStorage.setItem("current-user", JSON.stringify(currentUser))
+  })
   //its working
   const handleCreate = (user) =>{
     console.log(user)
@@ -57,12 +71,14 @@ function App() {
       .then((response)=>{
         setCurrentUser(response.data)
         console.log(response)
-        getUsers()
+        getUsers()  
       })
   }
   const handleLogout = () =>{
     console.log(currentUser)
     setCurrentUser('')
+    // clearing the local storage once the user logs out 
+    localStorage.clear("current-user")
   }
   return (
     <>

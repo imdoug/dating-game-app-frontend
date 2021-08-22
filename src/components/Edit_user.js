@@ -10,7 +10,7 @@ const Edit = (props)=>{
         event.preventDefault()
         console.log(user)
         props.handleUpdate(user)
-    }    
+    }
     return(
         <>
         <details>
@@ -24,6 +24,20 @@ const Edit = (props)=>{
                 <input type="password" name="password"  onChange={handleChange}/>
                 <br/>
                 <br/>
+                <label>Image</label>
+                <input type="text" name="image"  onChange={handleChange}/>
+                <br/>
+                <br/>
+                <label>Name</label>
+                <input type="name" name="name"  onChange={handleChange}/>
+                <br/>
+                <br/>
+                <label>Age</label>
+                <input type="int" name="age"  onChange={handleChange}/>
+                <br/>
+                <br/>
+
+
                 <input type="submit" value="EDIT USER"/>
             </form>
         </details>
@@ -32,3 +46,13 @@ const Edit = (props)=>{
 }
 
 export default Edit
+
+
+// <label>Favorite Console</label>
+// <input type="fav_console" name="fav_console"  onChange={handleChange}/>
+// <br/>
+// <br/>
+// <label>Favorite Games</label>
+// <input type="fav_games" name="fav_games"  onChange={handleChange}/>
+// <br/>
+// <br/>

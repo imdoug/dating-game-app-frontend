@@ -8,11 +8,30 @@ function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
 
-  //Its working 
+  let [games, setGames] = useState([])
+
+  const getGames = () =>{
+    console.log('games come here')
+    axios
+      .get('http://localhost:8000/api/games')
+      .then(
+        (response) => setGames(response.data),
+        (error) => console.error(error)
+      )
+      .catch((error)=> console.error(error))
+    }
+
+  useEffect(() => {
+    getGames()
+  }, [])
+
+
+  //Its working
   const getUsers = ()=>{
     console.log('users came here')
       axios
-      .get('https://datinggameapp.herokuapp.com/api/useraccount')
+      .get('http://localhost:8000/api/useraccount')
+      // .get('https://datinggameapp.herokuapp.com/api/useraccount')
       .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
@@ -28,7 +47,7 @@ function App() {
     }
     getUsers()
   },[])
-  // local storage 
+  // local storage
   useEffect(()=>{
     //creating a local storage item where we'll receive our user data after a login
     //converting to string to be readable on the local storage
@@ -38,26 +57,29 @@ function App() {
   const handleCreate = (user) =>{
     console.log(user)
     axios
-      .post('https://datinggameapp.herokuapp.com/api/useraccount', user)
+      .post('http://localhost:8000/api/useraccount', user)
+      // .post('https://datinggameapp.herokuapp.com/api/useraccount', user)
       .then((response)=>{
         console.log('im coming back')
         console.log(response)
         getUsers()
       })
   }
-  //its working 
+  //its working
   const handleUpdate = (updatedUser) =>{
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedUser.id, updatedUser)
+      .put('http://localhost:8000/api/useraccount' + updatedUser.id, updatedUser)
+      // .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedUser.id, updatedUser)
       .then((response)=>{
         console.log(response)
         getUsers()
       })
   }
-  //its working 
+  //its working
   const handleDelete = (user)=>{
     axios
-      .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
+      .delete('http://localhost:8000/api/useraccount' + user.id)
+      // .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -66,17 +88,18 @@ function App() {
   const handleLogin = (event, user)=>{
     event.preventDefault()
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
+      .put('http://localhost:8000/api/useraccount/login', user)
+      // .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
       .then((response)=>{
         setCurrentUser(response.data)
         console.log(response)
-        getUsers()  
+        getUsers()
       })
   }
   const handleLogout = () =>{
     console.log(currentUser)
     setCurrentUser('')
-    // clearing the local storage once the user logs out 
+    // clearing the local storage once the user logs out
     localStorage.clear("current-user")
   }
   return (
@@ -85,17 +108,63 @@ function App() {
       {currentUser && <button onClick={handleLogout}>LOGOUT!</button>}
       <Login user={currentUser} handleLogin={handleLogin}/>
       <Create handleCreate={handleCreate}/>
+
+
       {users.map((user)=>{
         return(
         <div>
+          <img src={user.image} alt=""/>
           <h4>{user.username}</h4>
+          <li>
+            <ul>Age: {user.age}</ul>
+            <ul>Favorite Console: {user.fav_console}</ul>
+            <ul>Favorite Games: {user.fav_games}</ul>
+            <ul>Favorite Game name: {user.fav_games.name}</ul>
+            <ul>Users Liked: {user.users_liked}</ul>
+            <ul>User ID: {user.id}</ul>
+          </li>
           <Edit handleUpdate={handleUpdate} user={user}/>
           <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+
+
+          {games.map((game)=>{
+            return(
+              <div>
+                <h4>Game name: {game.name}</h4>
+                <img src={game.image} />
+                <h4>Game ID: {game.id}</h4>
+              </div>
+            )}
+          )}
+
+
         </div>
       )}
       )}
+
+
     </>
   )
 }
 
 export default App
+
+
+
+// {games.map((game)=>{
+//   return(
+//     <div>
+//       <img src={game.image} alt=""/>
+//       <h4>{game.name}</h4>
+//       <h4>Game ID: {game.id}</h4>
+//       <h4>Genre: {game.genre}</h4>
+//     </div>
+//   )}
+// )}
+
+
+// {user.fav_games == game.id &&
+//   <h4>Game name: {game.name}</h4>
+//
+// }
+// {game.id}

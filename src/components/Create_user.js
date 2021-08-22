@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 const Create = (props) =>{
-    let  emptyUser = {username: '', password: '', age: '', fav_console: '',image: '',name: '',fav_games: []}
+    let  emptyUser = {username: '', password: '', age: '', fav_console: '',image: '',name: '',fav_games: [], users_liked: []}
     const [user, setUser] = useState(emptyUser)
     const handleChange  = (event) =>{
         setUser({...user, [event.target.name]: event.target.value})

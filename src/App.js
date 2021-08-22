@@ -1,14 +1,16 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import Create from './components/Create_user'
-import Edit from './components/Edit_user'
+import EditProfile from './components/Edit_profile'
 import Login from './components/Login'
+// import NewProfile from './components/Create_profile'
 
 function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
+  // let [profile, setCurrentProfile] = useState([])
 
-  //Its working 
+  //Its working
   const getUsers = ()=>{
     console.log('users came here')
       axios
@@ -28,7 +30,7 @@ function App() {
     }
     getUsers()
   },[])
-  // local storage 
+  // local storage
   useEffect(()=>{
     //creating a local storage item where we'll receive our user data after a login
     //converting to string to be readable on the local storage
@@ -45,16 +47,16 @@ function App() {
         getUsers()
       })
   }
-  //its working 
-  const handleUpdate = (updatedUser) =>{
+  //its working
+  const handleUpdate = (updatedProfile) =>{
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedUser.id, updatedUser)
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedProfile.id, updatedProfile)
       .then((response)=>{
         console.log(response)
         getUsers()
       })
   }
-  //its working 
+  //its working
   const handleDelete = (user)=>{
     axios
       .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
@@ -70,13 +72,13 @@ function App() {
       .then((response)=>{
         setCurrentUser(response.data)
         console.log(response)
-        getUsers()  
+        getUsers()
       })
   }
   const handleLogout = () =>{
     console.log(currentUser)
     setCurrentUser('')
-    // clearing the local storage once the user logs out 
+    // clearing the local storage once the user logs out
     localStorage.clear("current-user")
   }
   return (

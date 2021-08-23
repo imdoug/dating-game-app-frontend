@@ -6,13 +6,14 @@ import Login from './components/Login'
 
 function App() {
   let [users, setUsers] = useState([])
-  let [currentUser, setCurrentUser] = useState({})
+  let [currentUser, setCurrentUser] = useState("")
+  let games = [{name: 'Playstation'},{name: 'X-BOX'},{name: 'Switch'}]
 
   //Its working 
   const getUsers = ()=>{
     console.log('users came here')
       axios
-      .get('https://datinggameapp.herokuapp.com/api/useraccount')
+      .get('http://localhost:8000/api/useraccount')
       .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
@@ -38,7 +39,7 @@ function App() {
   const handleCreate = (user) =>{
     console.log(user)
     axios
-      .post('https://datinggameapp.herokuapp.com/api/useraccount', user)
+      .post('http://localhost:8000/api/useraccount', user)
       .then((response)=>{
         console.log('im coming back')
         console.log(response)
@@ -48,7 +49,8 @@ function App() {
   //its working 
   const handleUpdate = (updatedUser) =>{
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedUser.id, updatedUser)
+      // .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedUser.id, updatedUser)
+      .put('http://localhost:8000/api/useraccount/'+ updatedUser.id, updatedUser)
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -57,7 +59,8 @@ function App() {
   //its working 
   const handleDelete = (user)=>{
     axios
-      .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
+      // .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
+      .delete('http://localhost:8000/api/useraccount/' + user.id)
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -66,7 +69,8 @@ function App() {
   const handleLogin = (event, user)=>{
     event.preventDefault()
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
+      // .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
+      .put('http://localhost:8000/api/useraccount/login', user)
       .then((response)=>{
         setCurrentUser(response.data)
         console.log(response)
@@ -83,17 +87,32 @@ function App() {
     <>
       <h1>Welcome to The Dating Game!</h1>
       {currentUser && <button onClick={handleLogout}>LOGOUT!</button>}
-      <Login user={currentUser} handleLogin={handleLogin}/>
-      <Create handleCreate={handleCreate}/>
-      {users.map((user)=>{
-        return(
-        <div>
-          <h4>{user.username}</h4>
-          <Edit handleUpdate={handleUpdate} user={user}/>
-          <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+      <div className="main-container">
+        <div className="box1">
+        <Create handleCreate={handleCreate}/>
+          {users.map((user)=>{
+          return(
+          <div>
+            <h4>{user.username}</h4>
+            <select>
+            {games.map((game)=>{
+              return(
+                <>
+                  <option>{game.name}</option>
+                </>
+              )
+            })}
+            </select>
+            <Edit handleUpdate={handleUpdate} user={user} currentUser={currentUser}/>
+            <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+          </div>
+        )}
+        )}
         </div>
-      )}
-      )}
+        <div className="box2">
+          <Login user={currentUser} handleLogin={handleLogin}/>
+        </div>
+      </div>
     </>
   )
 }

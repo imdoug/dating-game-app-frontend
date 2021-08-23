@@ -21,17 +21,17 @@ const Login = (props) =>{
 
                     <div className="row">
                         <div className="icon">
-                            <i class="fa fa-user-circle-o"></i>
+                            <i className="fa fa-user-circle-o"></i>
                         </div>
-                        <input clasName="input-field login" type="text" name="username" placeholder="username" onChange={handleChange}/>
+                        <input className="input-field login" type="text" name="username" placeholder="username" onChange={handleChange}/>
                     </div>
                 </div>
             <br />
             <div id="log" className="row">
                 <div className="icon">
-                    <i class="fa fa-key"></i>
+                    <i className="fa fa-key"></i>
                 </div>
-                <input clasName="login"type="password" name="password" placeholder="password" onChange={handleChange}/>
+                <input className="login"type="password" name="password" placeholder="password" onChange={handleChange}/>
             </div>
             <br />
             <div className="btn-row">

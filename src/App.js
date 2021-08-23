@@ -70,7 +70,7 @@ function App() {
       })
   }
   //its working
-handleUpdate = (updatedProfile) =>{
+  const handleUpdate = (updatedProfile) =>{
     axios
       .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedProfile.id, updatedProfile)
       .then((response)=>{
@@ -105,6 +105,47 @@ handleUpdate = (updatedProfile) =>{
     // clearing the local storage once the user logs out
     localStorage.clear("current-user")
   }
+
+
+  // render() {
+  //   const isLoggedIn = this.state.isLoggedIn;
+  //   let button;
+  //   if (isLoggedIn) {
+  //     button = <LogoutButton onClick={this.handleLogoutClick} />;
+  //   } else {
+  //     button = <LoginButton onClick={this.handleLoginClick} />;
+  //   }
+  // }
+
+  // games.map((game)=>{
+  //   console.log(game.name, game.genre)
+  // })
+
+  // for(let i = 0; i < games.size; i++){
+  //   console.log(games[i].id)
+  // }
+
+  // users.map((user) => {
+  //   console.log(user.username, user.fav_games, user.id)
+  //
+  //   for(let i = 0; i < user.fav_games.size; i++){
+  //     // if (user.fav_games[i] == game.id){
+  //     //
+  //     // }
+  //   }
+  // })
+
+  for(let i = 0; i < games.size; i++){
+    console.log("here is a game: ", games[i])
+  }
+
+  // const compare = (user_id, userFavGames, allGames) =>{
+  //
+  //   for(let i = 0; i < userFavGames.size; i++){
+  //     if userFavGames[i] ==
+  //   }
+  // }
+
   return (
     <>
       <h1>Welcome to The Dating Game!</h1>
@@ -118,21 +159,34 @@ handleUpdate = (updatedProfile) =>{
         return(
         <div>
           <img src={user.image} alt=""/>
-          <h4>{user.username}</h4>
-
+          <h4> Username: {user.username}</h4>
+          <p> fav games: {user.fav_games}</p>
+          { /* <p> fav games: {user.fav_games[0]}</p> */ }
           <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
 
 
+          { /*}
           {games.map((game)=>{
             return(
               <div>
                 {user.fav_games == game.id &&
-                  <p>{game.name}</p>
+                  <p>fav games {game.name}</p>
                 }
                 <p> all games: {game.name} </p>
               </div>
             )}
           )}
+
+          */}
+
+
+
+
+
+
+
+
+
 
 
         </div>
@@ -172,3 +226,31 @@ export default App
 // <h4>Game name: {game.name}</h4>
 // {/* <img src={game.image} /> */}
 // <h4>Game ID: {game.id}</h4>
+
+
+// {for(let i = 0; i < {user.fav_games.size}; i++)
+//   console.log("this user's fav games are", user.fav_games[i])
+//
+// }
+
+
+
+
+// {user.fav_games.map((favedgame)=>{
+//   return(
+//     <div>
+//       <p> this user's fav_games are: {favedgame} </p>
+//
+//
+//       {games.map((game)=>{
+//         return(
+//           <div>
+//             {favedgame == game.id &&
+//               <p>this users's fav_games' names are: {game.name}</p>
+//             }
+//           </div>
+//         )
+//       })}
+//     </div>
+//   )
+// })}

@@ -85,17 +85,23 @@ function App() {
     <>
       <h1>Welcome to The Dating Game!</h1>
       {currentUser && <button onClick={handleLogout}>LOGOUT!</button>}
-      <Login user={currentUser} handleLogin={handleLogin}/>
+      <div className="main-container">
+        <div className="box1">
       <Create handleCreate={handleCreate}/>
       {users.map((user)=>{
         return(
         <div>
           <h4>{user.username}</h4>
-          <Edit handleUpdate={handleUpdate} user={user}/>
+          <EditProfile handleUpdate={handleUpdate} user={user}/>
           <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
         </div>
       )}
       )}
+      </div>
+      <div className="box2">
+      <Login user={currentUser} handleLogin={handleLogin}/>
+    </div>
+  </div>
     </>
   )
 }

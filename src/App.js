@@ -130,9 +130,10 @@ function App() {
           {games.map((game)=>{
             return(
               <div>
-                <h4>Game name: {game.name}</h4>
-                <img src={game.image} />
-                <h4>Game ID: {game.id}</h4>
+                {user.fav_games == game.id &&
+                  <p>{game.name}</p>
+                }
+                <p> all games: {game.name} </p>
               </div>
             )}
           )}
@@ -168,3 +169,7 @@ export default App
 //
 // }
 // {game.id}
+
+// <h4>Game name: {game.name}</h4>
+// {/* <img src={game.image} /> */}
+// <h4>Game ID: {game.id}</h4>

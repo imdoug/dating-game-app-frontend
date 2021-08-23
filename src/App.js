@@ -1,12 +1,15 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import Create from './components/Create_user'
-import Edit from './components/Edit_user'
+import EditProfile from './components/Edit_profile'
 import Login from './components/Login'
+// import NewProfile from './components/Create_profile'
 
 function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
+  // let [profile, setCurrentProfile] = useState([])
+
 
   let [games, setGames] = useState([])
 
@@ -24,6 +27,7 @@ function App() {
   useEffect(() => {
     getGames()
   }, [])
+
 
 
   //Its working
@@ -66,10 +70,9 @@ function App() {
       })
   }
   //its working
-  const handleUpdate = (updatedUser) =>{
+handleUpdate = (updatedProfile) =>{
     axios
-      .put('http://localhost:8000/api/useraccount' + updatedUser.id, updatedUser)
-      // .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedUser.id, updatedUser)
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedProfile.id, updatedProfile)
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -106,7 +109,8 @@ function App() {
     <>
       <h1>Welcome to The Dating Game!</h1>
       {currentUser && <button onClick={handleLogout}>LOGOUT!</button>}
-      <Login user={currentUser} handleLogin={handleLogin}/>
+      <div className="main-container">
+        <div className="box1">
       <Create handleCreate={handleCreate}/>
 
 
@@ -115,15 +119,7 @@ function App() {
         <div>
           <img src={user.image} alt=""/>
           <h4>{user.username}</h4>
-          <li>
-            <ul>Age: {user.age}</ul>
-            <ul>Favorite Console: {user.fav_console}</ul>
-            <ul>Favorite Games: {user.fav_games}</ul>
-            <ul>Favorite Game name: {user.fav_games.name}</ul>
-            <ul>Users Liked: {user.users_liked}</ul>
-            <ul>User ID: {user.id}</ul>
-          </li>
-          <Edit handleUpdate={handleUpdate} user={user}/>
+
           <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
 
 
@@ -142,8 +138,11 @@ function App() {
         </div>
       )}
       )}
-
-
+      </div>
+      <div className="box2">
+      <Login user={currentUser} handleLogin={handleLogin}/>
+    </div>
+  </div>
     </>
   )
 }

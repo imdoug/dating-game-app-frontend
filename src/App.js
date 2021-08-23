@@ -3,12 +3,15 @@ import axios from 'axios'
 import Create from './components/Create_user'
 import EditProfile from './components/Edit_profile'
 import Login from './components/Login'
-// import NewProfile from './components/Create_profile'
+import Profile from "./components/profile_modal"
+// import Edit from "./components/Edit_modal"
 
 function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
-  // let [profile, setCurrentProfile] = useState([])
+  //modal states
+  const [viewProfileModal, setViewProfileModal] = useState('')
+  const [viewEditModal, setViewEditModal] = useState('')
 
   //Its working
   const getUsers = ()=>{
@@ -90,11 +93,24 @@ function App() {
       <Create handleCreate={handleCreate}/>
       {users.map((user)=>{
         return(
-        <div>
-          <h4>{user.username}</h4>
-          <EditProfile handleUpdate={handleUpdate} user={user}/>
-          <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
-        </div>
+          <>
+              <div className="user-card">
+
+                <Profile data={user} onClose={() => setViewProfileModal(false)}
+                  viewProfileModal={viewProfileModal}/>
+
+                {viewEditModal === user.id &&
+                <EditProfile data={user} onClose={() => setViewEditModal(false)}
+                  viewEditModal={viewEditModal}/>
+                }
+
+                <h4>{user.username}</h4>
+
+                <button onClick={() => setViewProfileModal(user.id)} > View Profile </button>
+                <button onClick={() => setViewEditModal(user.id)} > Edit Profile </button>
+                <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+              </div>
+          </>
       )}
       )}
       </div>
@@ -107,3 +123,6 @@ function App() {
 }
 
 export default App
+
+//we had this in our map but I am putting it here for now just in case I break something and need to put it back and leaving it in the fragments looks weird
+// <EditProfile handleUpdate={handleUpdate} user={user}/>

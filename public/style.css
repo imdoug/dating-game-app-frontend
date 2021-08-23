@@ -86,4 +86,64 @@ input{
     padding:0px 25% 0px 25% ;
 }
 
+/* user display card */
+.user-card{
+  border-style: solid;
+  background-color: white;
+  margin: 5px;
+}
 
+/* profile modal */
+.profile-modal-box{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-modal-content{
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 14px 12px 0 rgb(0,0,0,.5);
+}
+
+.profile-modal-content > img{
+  width: 250px;
+  height: auto;
+}
+
+/* edit modal */
+/* profile modal */
+.edit-modal-box{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-modal-content{
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 14px 12px 0 rgb(0,0,0,.5);
+}
+
+.edit-modal-content > img{
+  width: 250px;
+  height: auto;
+}

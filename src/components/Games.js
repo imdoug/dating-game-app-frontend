@@ -18,7 +18,7 @@ const Game = (props) => {
     <>
     <details>
       <summary>Favorite Games:</summary>
-      <form onSubmit={handleSubmit}
+      <form onSubmit={handleSubmit}>
         <label>Name: </label>
         <input type="text" name="name" onChange={handleChange}/>
         <br/>

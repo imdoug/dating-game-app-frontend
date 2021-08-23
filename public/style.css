@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+/* *{
+    border: 1px solid gold;
+} */
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('https://thisrupt.co/wp-content/uploads/2020/07/Streaming_Article.jpg');
+    background-position: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Play', sans-serif;
+}
+/* main container */
+.main-container{
+    margin: 0 auto;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    /* align-items: center; */
+}
+/* box 1 */
+.box1{
+    width: 40%;
+    height: 400px;
+    background: rgba(105,30,183, 0.7);
+}
+/* box 2 */
+.box2{
+    width: 40%;
+    height: 400px;
+    background: whitesmoke;
+}
+
+.h3{
+    text-align: center;
+}
+.row{
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    height: 5vh;
+    align-items: center;
+    border-radius: 32px;
+    background: #FFF;
+    margin: 0 auto;
+}
+input{
+    width: 65%;
+    height: 70%;
+    border-radius: 0px 32px 32px 0px;
+    margin-left: 3%;
+    background: #fff;
+    border: 0px;
+    justify-content: center;
+    font-family: 'Play', sans-serif;
+}
+
+.icon{
+    width: 15%;
+    font-size: 1.2em;
+    height: 80%;
+    background: white;
+    border-radius: 50%;
+}
+.fa{
+    border-radius: 50%;
+    color: #999;
+}
+.btn-row{
+    display: flex;
+    justify-content: center;
+}
+.login-btn{
+    width: 15%;
+    height: 7vh;
+    border-radius: 32px;
+    font-size: 0.4em;
+    text-align: center;
+}
+/* sign-up-form */
+.sign-up-form{
+    display: flex;
+    justify-content: center;
+    padding:0px 25% 0px 25% ;
+}
+
+

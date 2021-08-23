@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 
 const EditProfile = (props)=>{
-    let  emptyUser = {...props.user}
+    let  emptyProfile = {...props.user}
     const [profile, setProfile] = useState(emptyProfile)
     const handleChange  = (event) =>{
         setProfile({...profile, [event.target.name]: event.target.value})

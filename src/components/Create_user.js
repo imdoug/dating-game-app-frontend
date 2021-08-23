@@ -13,20 +13,28 @@ const Create = (props) =>{
     }
     return (
         <>
-        <details>
-            <summary>New User Form</summary>
-            <form onSubmit={handleSubmit}>
-                <label>Username: </label>
-                <input type="text" name="username" onChange={handleChange}/>
-                <br/>
-                <br/>
-                <label>Password</label>
-                <input type="password" name="password"  onChange={handleChange}/>
-                <br/>
-                <br/>
-                <input type="submit" value="CREATE NEW USER"/>
+        <h3 className="h3">SIGN UP</h3>
+            <form  onSubmit={handleSubmit}>
+                    <div className="login-form">
+                        <div className="row">
+                            <div className="icon">
+                                <i class="fa fa-user-circle-o"></i>
+                            </div>
+                            <input clasName="input-field" type="text" name="username" placeholder="username" onChange={handleChange}/>
+                        </div>
+                    </div>
+                <br />
+                <div className="row">
+                    <div className="icon">
+                        <i class="fa fa-key"></i>
+                    </div>
+                    <input type="password" name="password" placeholder="password" onChange={handleChange}/>
+                </div>
+                <br />
+                <div className="btn-row">
+                    <input className="login-btn" type="submit" value="LOGIN"/>
+                </div>
             </form>
-      </details>
         </>
     )
 }

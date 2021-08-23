@@ -1,4 +1,6 @@
 import React,{useState} from "react"
+// import Game from './Games'
+
 
 const EditProfile = (props)=>{
     let  emptyUser = {...props.user}

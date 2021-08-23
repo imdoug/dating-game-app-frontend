@@ -18,15 +18,15 @@ const Create = (props) =>{
                     <div className="login-form">
                         <div className="row">
                             <div className="icon">
-                                <i class="fa fa-user-circle-o"></i>
+                                <i className="fa fa-user-circle-o"></i>
                             </div>
-                            <input clasName="input-field" type="text" name="username" placeholder="username" onChange={handleChange}/>
+                            <input className="input-field" type="text" name="username" placeholder="username" onChange={handleChange}/>
                         </div>
                     </div>
                 <br />
                 <div className="row">
                     <div className="icon">
-                        <i class="fa fa-key"></i>
+                        <i className="fa fa-key"></i>
                     </div>
                     <input type="password" name="password" placeholder="password" onChange={handleChange}/>
                 </div>

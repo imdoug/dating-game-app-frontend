@@ -16,7 +16,9 @@ const Login = (props) =>{
         <>
         <h3 className="h3">LOGIN</h3>
         <form  onSubmit={handleSubmit}>
+
                 <div id="log" className="login-form">
+
                     <div className="row">
                         <div className="icon">
                             <i class="fa fa-user-circle-o"></i>

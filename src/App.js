@@ -157,28 +157,27 @@ function App() {
 
       {users.map((user)=>{
         return(
-        <div>
-          <img src={user.image} alt=""/>
-          <h4> Username: {user.username}</h4>
-          <p> fav games: {user.fav_games}</p>
-          { /* <p> fav games: {user.fav_games[0]}</p> */ }
-          <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+          <div>
+            <img src={user.image} alt=""/>
+            <h4> Username: {user.username}</h4>
+            <p> fav games: {user.fav_games}</p>
+            { /* <p> fav games: {user.fav_games[0]}</p> */ }
+            <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
 
 
-          { /*}
-          {games.map((game)=>{
-            return(
-              <div>
-                {user.fav_games == game.id &&
-                  <p>fav games {game.name}</p>
-                }
-                <p> all games: {game.name} </p>
-              </div>
+            { /*}
+            {games.map((game)=>{
+              return(
+                <div>
+                  {user.fav_games == game.id &&
+                    <p>fav games {game.name}</p>
+                  }
+                  <p> all games: {game.name} </p>
+                </div>
+              )}
             )}
-          )}
 
-          */}
-
+            */}
 
 
 
@@ -189,7 +188,12 @@ function App() {
 
 
 
-        </div>
+
+
+
+
+
+          </div>
       )}
       )}
       </div>

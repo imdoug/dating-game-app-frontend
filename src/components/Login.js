@@ -8,24 +8,34 @@ const Login = (props) =>{
     }
     const handleSubmit = (event) =>{
         event.preventDefault()
-        console.log(user)
         props.handleLogin(event, user)
     }
 
     return (
         <>
-        <details>
-        <summary>Login</summary>
-            <form onSubmit={handleSubmit}>
-            <label>Username: </label>
-            <input type="text" name="username" onChange={handleChange}/>
+        <h3 className="h3">LOGIN</h3>
+        <form  onSubmit={handleSubmit}>
+                <div id="log" className="login-form">
+
+                    <div className="row">
+                        <div className="icon">
+                            <i className="fa fa-user-circle-o"></i>
+                        </div>
+                        <input className="input-field login" type="text" name="username" placeholder="username" onChange={handleChange}/>
+                    </div>
+                </div>
             <br />
-            <label>Password: </label>
-            <input type="password" name="password" onChange={handleChange}/>
+            <div id="log" className="row">
+                <div className="icon">
+                    <i className="fa fa-key"></i>
+                </div>
+                <input className="login"type="password" name="password" placeholder="password" onChange={handleChange}/>
+            </div>
             <br />
-            <input type="submit" value="LOGIN"/>
+            <div className="btn-row">
+                <input className="login-btn login" type="submit" value="LOGIN"/>
+            </div>
         </form>
-      </details>
         </>
     )
 }

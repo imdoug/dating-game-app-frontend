@@ -39,7 +39,7 @@ const UserInfo = (props)=>{
                                     <div className="btn-right"><i class="fa">&#xf10c;</i></div>
                                 </div>
                                 <h3>{props.user.name}, {props.user.age}</h3>
-                                <p><span>{props.user.location}, NY</span></p>
+                                <p><span>{props.user.location}</span></p>
                             </div>
 
                         </div>
@@ -47,7 +47,6 @@ const UserInfo = (props)=>{
                     <nav>
                         <a type="button" onClick={props.openModal}><i className="fa fa-user"></i></a>
                         <a type="button" onClick={openMatches}><i class="fa fa-heart"></i></a>
-                        <a type="button" onClick={props.modal}><i class='fas fa-clone'></i></a>
                         <a type="button" onClick={(event)=>{props.delete(props.user)}}><i class="fa fa-trash-o"></i></a>
                         <a type="button"><i onClick={props.handleLogout} class="fa fa-sign-out"></i></a>
                     </nav>

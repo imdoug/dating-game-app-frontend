@@ -1,6 +1,4 @@
 import React,{useState} from "react"
-// import Game from './Games'
-
 
 const EditProfile = (props)=>{
     let  emptyProfile = {...props.user}
@@ -12,6 +10,7 @@ const EditProfile = (props)=>{
         event.preventDefault()
         console.log(profile)
         props.handleUpdate(profile)
+        props.onClose()
     }
     return(
         <>
@@ -27,6 +26,9 @@ const EditProfile = (props)=>{
               <br />
                 <label htmlFor="age">Age: </label>
                 <input type="text" name="age" onChange={handleChange}/>
+              <br />
+                <label htmlFor="location">Location: </label>
+                <input type="text" name="location" onChange={handleChange}/>
               <br />
                 <label htmlFor="fav_console">Favorite Console: </label>
                 <input type="text" name="fav_console" onChange={handleChange}/>

@@ -8,13 +8,14 @@ const Profile = (props) => {
 
   return(
     <>
-      {props.viewEditModal === props.data.id &&
+      {props.viewProfileModal === props.data.id &&
         <div className="profile-modal-box" onClick={props.onClose}>
           <div className="profile-modal-content" onClick={event => event.stopPropagation()}>
             <h2>{props.data.username}</h2><br/>
             <img src={props.data.image} alt="</3"/><br/>
             <div className="profile-modal-body">
               <h4 className="profile-modal-info">Age: {props.data.age} </h4><br/>
+              <h4 className="profile-modal-info">Location: {props.data.location} </h4><br/>
               <h4 className="profile-modal-info">Favorite Console: {props.data.fav_console} </h4><br/>
               <h4 className="profile-modal-info">Favorite Games: {props.data.fav_games} </h4><br/>
             </div>

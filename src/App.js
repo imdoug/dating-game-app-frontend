@@ -5,11 +5,14 @@ import EditProfile from './components/Edit_profile'
 import Login from './components/Login'
 import Profile from "./components/profile_modal"
 import Game from "./components/Games"
+import UserProfile from './components/User_profile'
+// import NewProfile from './components/Create_profile'
 
 function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
   let [games, setGames] = useState([])
+  // let [profile, setCurrentProfile] = useState([])
   //modal states
   const [viewProfileModal, setViewProfileModal] = useState('')
   const [viewEditModal, setViewEditModal] = useState('')
@@ -19,7 +22,7 @@ function App() {
   const getUsers = ()=>{
     console.log('users came here')
       axios
-      .get('http://localhost:8000/api/useraccount')
+      .get('https://datinggameapp.herokuapp.com/api/useraccount')
       .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
@@ -105,7 +108,7 @@ function App() {
       <h1 className="logo">GAME ON</h1>
       {currentUser
       ?
-      <> 
+      <>
       <UserProfile user={currentUser} handleLogout={handleLogout}/>
       {/* when user is logged in  */}
       </>
@@ -167,9 +170,13 @@ function App() {
       )}
       )}
       </div>
-      <Editmodal/>
+      <div className="box2">
+        <Login user={currentUser} handleLogin={handleLogin}/>
+      </div>
+      </div>
+      <EditProfile/>
       </>
-      
+
       }
     </>
   )

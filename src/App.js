@@ -23,7 +23,7 @@ function App() {
   const getUsers = ()=>{
     console.log('users came here')
       axios
-      .get('http://localhost:8000/api/useraccount')
+      .get('https://datinggameapp.herokuapp.com/api/useraccount')
       .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
@@ -62,7 +62,7 @@ function App() {
   const handleCreate = (user) =>{
     console.log(user)
     axios
-      .post('http://localhost:8000/api/useraccount', user)
+      .post('https://datinggameapp.herokuapp.com/api/useraccount', user)
       .then((response)=>{
         console.log('im coming back')
         console.log(response)
@@ -73,7 +73,7 @@ function App() {
   const handleUpdate = (updatedProfile) =>{
     console.log(updatedProfile)
     axios
-      .put('http://localhost:8000/api/useraccount/'+ currentUser.id, updatedProfile)
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ currentUser.id, updatedProfile)
       .then((response)=>{
         console.log(response)
         setCurrentUser(response.data)
@@ -85,7 +85,7 @@ function App() {
     console.log('im ready to delete this user')
     console.log(user)
     axios
-      .delete('http://localhost:8000/api/useraccount/' + user.id)
+      .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
       .then((response)=>{
         console.log(response)
         setCurrentUser('')
@@ -97,7 +97,7 @@ function App() {
     event.preventDefault()
     axios
 
-      .put('http://localhost:8000/api/useraccount/login', user)
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
       .then((response)=>{
         setCurrentUser(response.data)
         console.log(response.data)

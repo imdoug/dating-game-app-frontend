@@ -2,29 +2,25 @@ import React from "react"
 
 const Profile = (props) => {
 
-  if(!props.viewProfileModal){
-    return null
-  }
-
   return(
     <>
-      {props.viewProfileModal === props.data.id &&
-        <div className="profile-modal-box" onClick={props.onClose}>
-          <div className="profile-modal-content" onClick={event => event.stopPropagation()}>
-            <h2>{props.data.username}</h2><br/>
-            <img src={props.data.image} alt="</3"/><br/>
-            <div className="profile-modal-body">
-              <h4 className="profile-modal-info">Age: {props.data.age} </h4><br/>
-              <h4 className="profile-modal-info">Location: {props.data.location} </h4><br/>
-              <h4 className="profile-modal-info">Favorite Console: {props.data.fav_console} </h4><br/>
-              <h4 className="profile-modal-info">Favorite Games: {props.data.fav_games} </h4><br/>
-            </div>
-            <div className="profile-modal-footer">
-              <button onClick={props.onClose} className="buttons">Close</button>
-            </div>
+        <div className="profile-modal-box hidden" onClick={props.onClose}>
+          <div className="profile-modal-content2" onClick={event => event.stopPropagation()}>
+          <div className="carousel2">
+                        <div className="card-pic2" style={{backgroundImage: `${props.data.image}`}}>
+                            <div className="user-info">
+                                <div className="btns">
+                                    <div className="btn-left"><i class="fa fa-close"></i></div>
+                                    <div className="btn-right"><i class="fa">&#xf10c;</i></div>
+                                </div>
+                                <h3>{props.data.name}, {props.data.age}</h3>
+                                <p><span>{props.data.location}</span></p>
+                                {/* map over fav games  */}
+                            </div>
+                        </div>
+                    </div>
           </div>
         </div>
-      }
     </>
   )
 

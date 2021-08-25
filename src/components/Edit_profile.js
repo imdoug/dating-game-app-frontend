@@ -42,9 +42,6 @@ const EditProfile = (props)=>{
                 <div>
                   <button className="sub-edit"type="submit">Submit Changes</button>
                 </div>
-                <div>
-                  <button className="delete"type="button">delete</button>
-                </div>
               </form>
             </div>
           </div>

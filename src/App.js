@@ -5,6 +5,8 @@ import EditProfile from './components/Edit_profile'
 import Login from './components/Login'
 import Profile from "./components/profile_modal"
 // import Edit from "./components/Edit_modal"
+import UserInfo from './components/User-card'
+import Modal from './components/Modal'
 
 function App() {
   let [users, setUsers] = useState([])
@@ -52,8 +54,18 @@ function App() {
   }
   //its working
   const handleUpdate = (updatedProfile) =>{
+    console.log(updatedProfile)
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ updatedProfile.id, updatedProfile)
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ currentUser.id, 
+      {
+        id: currentUser.id,
+        username: currentUser.username,
+        name: updatedProfile.name || currentUser.name,
+        age: updatedProfile.age || currentUser.age ,
+        image: updatedProfile.image || currentUser.image,
+        fav_console: updatedProfile.fav_console || currentUser.fav_console,
+
+      })
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -84,40 +96,62 @@ function App() {
     // clearing the local storage once the user logs out
     localStorage.clear("current-user")
   }
+  const modal = () =>{
+    document.querySelector('.edit-modal-box').classList.toggle('hidden')
+  }
+  const profilePreview = () =>{
+    document.querySelector('.profile-modal-box').classList.toggle('hidden')
+  }
   return (
     <>
-      <h1>Welcome to The Dating Game!</h1>
-      {currentUser && <button onClick={handleLogout}>LOGOUT!</button>}
-      <div className="main-container">
-        <div className="box1">
-      <Create handleCreate={handleCreate}/>
-      {users.map((user)=>{
-        return(
-          <>
-              <div className="user-card">
-
-                <Profile data={user} onClose={() => setViewProfileModal(false)}
-                  viewProfileModal={viewProfileModal}/>
-
-                {viewEditModal === user.id &&
-                <EditProfile data={user} onClose={() => setViewEditModal(false)}
-                  viewEditModal={viewEditModal}/>
-                }
-
-                <h4>{user.username}</h4>
-
-                <button onClick={() => setViewProfileModal(user.id)} > View Profile </button>
-                <button onClick={() => setViewEditModal(user.id)} > Edit Profile </button>
-                <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
-              </div>
-          </>
-      )}
-      )}
+      <div className="logo">
+        <img src="https://i.ibb.co/2PtmYZg/logo-gameon.png"/>
       </div>
-      <div className="box2">
-      <Login user={currentUser} handleLogin={handleLogin}/>
+      {currentUser
+      ?
+      <> 
+      <UserInfo user={currentUser} handleLogout={handleLogout} data={users} openModal={modal} modal={profilePreview}/>
+      {/* when user is logged in  */}
+      </>
+      :
+      <>
+        <div className="main-container">
+          <div className="box1">
+        <Create handleCreate={handleCreate}/>
+        {/* {users.map((user)=>{
+          return(
+            <>
+                <div className="user-card">
+
+                  <Profile data={user} onClose={() => setViewProfileModal(false)}
+                    viewProfileModal={viewProfileModal}/>
+
+                  {viewEditModal === user.id &&
+                  <EditProfile user={currentUser} onClose={() => setViewEditModal(false)}
+                    viewEditModal={viewEditModal}/>
+                  }
+
+                  <h4>{user.username}</h4>
+
+                  <button onClick={() => setViewProfileModal(user.id)} > View Profile </button>
+                  <button onClick={() => setViewEditModal(user.id)} > Edit Profile </button>
+                  <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+                </div>
+            </>
+        )}
+        )} */}
+        </div>
+        <div className="box2">
+        <Login user={currentUser} handleLogin={handleLogin}/>
+      </div>
     </div>
-  </div>
+    </>
+    }
+    <Profile data={currentUser} onClose={profilePreview}/>
+    {
+      <EditProfile user={currentUser} onClose={modal}  handleUpdate={handleUpdate}/>
+    }
+    <Modal/>
     </>
   )
 }

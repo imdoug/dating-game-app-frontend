@@ -3,13 +3,17 @@ import axios from 'axios'
 import Create from './components/Create_user'
 import EditProfile from './components/Edit_profile'
 import Login from './components/Login'
-import UserProfile from './components/User_profile'
-// import NewProfile from './components/Create_profile'
+import Profile from "./components/profile_modal"
+import Game from "./components/Games"
 
 function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
-  // let [profile, setCurrentProfile] = useState([])
+  let [games, setGames] = useState([])
+  //modal states
+  const [viewProfileModal, setViewProfileModal] = useState('')
+  const [viewEditModal, setViewEditModal] = useState('')
+  const [viewGamesModal, setViewGamesModal] = useState('')
 
   //Its working
   const getUsers = ()=>{
@@ -21,6 +25,16 @@ function App() {
       )
       .catch((error)=> console.error(error))
   }
+
+  const getGames = () => {
+    console.log('games stuff')
+      axios
+        .get('https://datinggameapp.herokuapp.com/api/games')
+        .then((response) => setGames(response.data),
+        (error) => console.error(error))
+        .catch((error) => console.error(error))
+  }
+
   useEffect(()=>{
     //creating a getting the local storage information after a refresh
     const data = localStorage.getItem("current-user")
@@ -30,7 +44,10 @@ function App() {
       setCurrentUser(JSON.parse(data))
     }
     getUsers()
+    getGames()
   },[])
+
+
   // local storage
   useEffect(()=>{
     //creating a local storage item where we'll receive our user data after a login
@@ -96,21 +113,59 @@ function App() {
       <>
       <div className="main-container">
         <div className="box1">
-        <Create handleCreate={handleCreate} />
-        {/* carousel  */}
-        {/* {users.map((user)=>{
-          return(
-          <div>
-            <h4>{user.username}</h4>
-            <EditProfile handleUpdate={handleUpdate} user={user}/>
-            <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
-          </div>
-        )}
-        )} */}
-        </div>
-        <div className="box2">
-        <Login user={currentUser} handleLogin={handleLogin}/>
-        </div>
+
+      <Create handleCreate={handleCreate}/>
+      {users.map((user)=>{
+        return(
+          <>
+              <div className="user-card">
+
+                <Profile data={user} onClose={() => setViewProfileModal(false)}
+                  viewProfileModal={viewProfileModal}/>
+
+                {viewEditModal === user.id &&
+                <EditProfile handleUpdate={handleUpdate} user={user} onClose={() => setViewEditModal(false)}
+                  viewEditModal={viewEditModal}/>
+                }
+
+                {viewGamesModal === user.id &&
+                <Game handleCreate={handleCreate} handleUpdate={handleUpdate} games={games} onClose={() => setViewGamesModal(false)}
+                  viewGamesModal={viewGamesModal}/>
+                }
+
+                <h4>{user.username}</h4>
+
+
+
+                  {user.fav_games.map((faved_game)=>{
+                    return(
+                      <div className="display-fav_games">
+                        {/* Map over all games, then, selectively render */}
+                          {games.map((game)=>{
+                            return(
+                              <div>
+                                {faved_game === game.id &&
+                                  <ul>
+                                    <li>{game.name}</li>
+                                  </ul>
+                                }
+                              </div>
+                            )}
+                          )}
+                        </div>
+                    )}
+                  )}
+
+
+
+                <button onClick={() => setViewProfileModal(user.id)} > View Profile </button>
+                <button onClick={() => setViewEditModal(user.id)} > Edit Profile </button>
+                <button onClick={() => setViewGamesModal(user.id)} > Edit Games </button>
+                <button onClick={(event) =>{handleDelete(user)}} value={user.id}>DELETE</button>
+              </div>
+          </>
+      )}
+      )}
       </div>
       <Editmodal/>
       </>
@@ -121,3 +176,6 @@ function App() {
 }
 
 export default App
+
+//we had this in our map but I am putting it here for now just in case I break something and need to put it back and leaving it in the fragments looks weird
+// <EditProfile handleUpdate={handleUpdate} user={user}/>

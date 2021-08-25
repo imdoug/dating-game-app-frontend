@@ -19,7 +19,7 @@ function App() {
   const getUsers = ()=>{
     console.log('users came here')
       axios
-      .get('https://datinggameapp.herokuapp.com/api/useraccount')
+      .get('http://localhost:8000/api/useraccount')
       .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
@@ -58,7 +58,7 @@ function App() {
   const handleCreate = (user) =>{
     console.log(user)
     axios
-      .post('https://datinggameapp.herokuapp.com/api/useraccount', user)
+      .post('http://localhost:8000/api/useraccount', user)
       .then((response)=>{
         console.log('im coming back')
         console.log(response)
@@ -77,7 +77,7 @@ function App() {
   //its working
   const handleDelete = (user)=>{
     axios
-      .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
+      .delete('http://localhost:8000/api/useraccount/' + user.id)
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -86,10 +86,11 @@ function App() {
   const handleLogin = (event, user)=>{
     event.preventDefault()
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
+
+      .put('http://localhost:8000/api/useraccount/login', user)
       .then((response)=>{
         setCurrentUser(response.data)
-        console.log(response)
+        console.log(response.data)
         getUsers()
       })
   }
@@ -101,10 +102,18 @@ function App() {
   }
   return (
     <>
-      <h1>Welcome to The Dating Game!</h1>
-      {currentUser && <button onClick={handleLogout}>LOGOUT!</button>}
+      <h1 className="logo">GAME ON</h1>
+      {currentUser
+      ?
+      <> 
+      <UserProfile user={currentUser} handleLogout={handleLogout}/>
+      {/* when user is logged in  */}
+      </>
+      :
+      <>
       <div className="main-container">
         <div className="box1">
+
       <Create handleCreate={handleCreate}/>
       {users.map((user)=>{
         return(
@@ -158,10 +167,10 @@ function App() {
       )}
       )}
       </div>
-      <div className="box2">
-      <Login user={currentUser} handleLogin={handleLogin}/>
-    </div>
-  </div>
+      <Editmodal/>
+      </>
+      
+      }
     </>
   )
 }

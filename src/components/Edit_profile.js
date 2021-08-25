@@ -14,6 +14,7 @@ const EditProfile = (props)=>{
     }
     return(
         <>
+
         <h2>Edit Profile Form</h2>
           <div className="edit-modal-box" onClick={props.onClose}>
             <div className="edit-modal-content" onClick={event => event.stopPropagation()}>

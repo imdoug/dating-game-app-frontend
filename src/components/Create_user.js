@@ -13,7 +13,7 @@ const Create = (props) =>{
     }
     return (
         <>
-        <h3 className="h3">SIGN UP</h3>
+        <h3 className="h3 sign-up">SIGN UP</h3>
             <form  onSubmit={handleSubmit}>
                     <div className="login-form">
                         <div className="row">
@@ -25,14 +25,14 @@ const Create = (props) =>{
                     </div>
                 <br />
                 <div className="row">
-                    <div className="icon">
+                    <div className="icon1">
                         <i className="fa fa-key"></i>
                     </div>
                     <input type="password" name="password" placeholder="password" onChange={handleChange}/>
                 </div>
                 <br />
                 <div className="btn-row">
-                    <input className="login-btn" type="submit" value="LOGIN"/>
+                    <input className="login-btn" type="submit" value="ENTER"/>
                 </div>
             </form>
 

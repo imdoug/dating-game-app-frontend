@@ -11,9 +11,21 @@ const UserInfo = (props)=>{
         console.log(profile)
         props.handleUpdate(profile)
     }
+    const openChat = () =>{
+        alert('this is our chat')
+    }
+    const openMatches = () =>{
+        alert('this is my matches')
+    }
+    const openProfile = () =>{
+        document.querySelector('.modal-box').classList.toggle('hidden')
+    }
     return(
         <>
         <div className="profile-master">
+            <div className="controller-left">
+                <img src="https://i.ibb.co/vmcVJ6Y/left-bg.png"/>
+            </div>
             <div className="profile-show">
                 <div id="box-prof">
                     <div className="carousel">
@@ -26,13 +38,14 @@ const UserInfo = (props)=>{
                                 <h3>Brendan, 25</h3>
                                 <p><span>New York, NY</span></p>
                             </div>
+
                         </div>
                     </div>
                     <nav>
-                        <a type="button" onClick={()=>{}}><i className="fa fa-user"></i></a>
-                        <a type="button"><i class="fa fa-heart"></i></a>
-                        <a type="button"><i className='far fa-comment-dots'></i></a>
-                        <a type="button"><i class='fas fa-clone'></i></a>
+                        <a type="button" onClick={props.openModal}><i className="fa fa-user"></i></a>
+                        <a type="button" onClick={openMatches}><i class="fa fa-heart"></i></a>
+                        <a type="button" onClick={openChat}><i className='far fa-comment-dots'></i></a>
+                        <a type="button" onClick={props.modal}><i class='fas fa-clone'></i></a>
                         <a type="button"><i onClick={props.handleLogout} class="fa fa-sign-out"></i></a>
                     </nav>
                 </div>
@@ -62,6 +75,9 @@ const UserInfo = (props)=>{
                     <button className="logout-btn" onClick={props.handleLogout}>LOG OUT</button>
                     </div>
                 </div> */}
+            </div>
+            <div className="controller-right">
+                <img src="https://i.ibb.co/ZgC9XrX/rigth-bg.png"/>
             </div>
             </div>
         </>

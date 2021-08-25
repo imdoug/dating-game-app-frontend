@@ -1,43 +1,51 @@
 import React,{useState} from "react"
 
 const EditProfile = (props)=>{
-    let  emptyProfile = {...props.user}
-    const [profile, setProfile] = useState(emptyProfile)
+    let  emptyUser = { ...props.user}
+    const [user, setUser] = useState({ ...emptyUser})
     const handleChange  = (event) =>{
-        setProfile({...profile, [event.target.name]: event.target.value})
+        setUser({ ...user, [event.target.name]: event.target.value})
     }
+    console.log(user)
     const handleSubmit = (event) =>{
         event.preventDefault()
-        console.log(profile)
-        props.handleUpdate(profile)
-        props.onClose()
+
+        console.log(user)
+        props.handleUpdate(user)
+    }
+    const handleDelete = () =>{
+      props.handleDelete(user)
     }
     return(
         <>
-        <h2>Edit Profile Form</h2>
-          <div className="edit-modal-box" onClick={props.onClose}>
+          <div className="edit-modal-box hidden" onClick={props.onClose}>
             <div className="edit-modal-content" onClick={event => event.stopPropagation()}>
+            <p onClick={props.onClose} className="close-btn"><i class="fa fa-times-circle"></i></p>
+            <p className="form-title">EDIT FORM</p>
               <form onSubmit={handleSubmit}>
-                <label htmlFor="image">Image: </label>
-                <input type="url" name="image" onChange={handleChange}/>
-              <br />
-                <label htmlFor="name">Name: </label>
-                <input type="text" name="name" onChange={handleChange}/>
-              <br />
-                <label htmlFor="age">Age: </label>
-                <input type="text" name="age" onChange={handleChange}/>
-              <br />
-                <label htmlFor="location">Location: </label>
-                <input type="text" name="location" onChange={handleChange}/>
-              <br />
-                <label htmlFor="fav_console">Favorite Console: </label>
-                <input type="text" name="fav_console" onChange={handleChange}/>
-              <br />
-                <button type="submit" value="Edit Profile">Submit Changes</button>
+                <div className="edit-form-row">
+                  <p>Profile Picture</p>
+                  <input type="url" name="image" onChange={handleChange} placeholder={props.user.image}/>
+                </div>
+                <div className="edit-form-row">
+                  <p htmlFor="name">Name </p>
+                  <input type="text" name="name" onChange={handleChange} placeholder={props.user.name}/>
+                </div>
+                <div className="edit-form-row">
+                  <p htmlFor="age">Age </p>
+                  <input type="text" name="age" onChange={handleChange} placeholder={props.user.age}/>
+                </div>
+                <div className="edit-form-row">
+                  <p htmlFor="fav_console">Favorite Console </p>
+                  <input type="text" name="fav_console" onChange={handleChange} placeholder={props.user.fav_console}/>
+                </div>
+                <div>
+                  <button className="sub-edit"type="submit">Submit Changes</button>
+                </div>
+                <div>
+                  <button className="delete"type="button">delete</button>
+                </div>
               </form>
-              <div className="profile-modal-footer">
-                <button onClick={props.onClose} className="buttons">Close</button>
-              </div>
             </div>
           </div>
         </>

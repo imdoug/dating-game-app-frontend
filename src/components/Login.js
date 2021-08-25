@@ -13,7 +13,7 @@ const Login = (props) =>{
 
     return (
         <>
-        <h3 className="h3">LOGIN</h3>
+        <h3 className="h3 sign-in">SIGN IN</h3>
         <form  onSubmit={handleSubmit}>
                 <div id="log" className="login-form">
 
@@ -26,14 +26,14 @@ const Login = (props) =>{
                 </div>
             <br />
             <div id="log" className="row">
-                <div className="icon">
+                <div className="icon1">
                     <i className="fa fa-key"></i>
                 </div>
                 <input className="login"type="password" name="password" placeholder="password" onChange={handleChange}/>
             </div>
             <br />
             <div className="btn-row">
-                <input className="login-btn login" type="submit" value="LOGIN"/>
+                <input className="login-btn login" type="submit" value="ENTER"/>
             </div>
         </form>
         </>

@@ -6,8 +6,7 @@ import Login from './components/Login'
 import Profile from "./components/profile_modal"
 // import Edit from "./components/Edit_modal"
 import UserInfo from './components/User-card'
-import Game from "./components/Games"
-import UserProfile from './components/User_profile'
+// import Game from "./components/Games"
 // import NewProfile from './components/Create_profile'
 
 function App() {
@@ -74,27 +73,23 @@ function App() {
   const handleUpdate = (updatedProfile) =>{
     console.log(updatedProfile)
     axios
-      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ currentUser.id, 
-      {
-        id: currentUser.id,
-        username: currentUser.username,
-        name: updatedProfile.name || currentUser.name,
-        age: updatedProfile.age || currentUser.age ,
-        image: updatedProfile.image || currentUser.image,
-        fav_console: updatedProfile.fav_console || currentUser.fav_console,
-
-      })
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/'+ currentUser.id, updatedProfile)
       .then((response)=>{
         console.log(response)
+        setCurrentUser(response.data)
         getUsers()
       })
   }
   //its working
   const handleDelete = (user)=>{
+    console.log('im ready to delete this user')
+    console.log(user)
     axios
-      .delete('https://datinggameapp.herokuapp.com/useraccount/' + user.id)
+      .delete('https://datinggameapp.herokuapp.com/api/useraccount/' + user.id)
       .then((response)=>{
         console.log(response)
+        setCurrentUser('')
+        localStorage.clear("current-user")
         getUsers()
       })
   }
@@ -129,7 +124,7 @@ function App() {
       {currentUser
       ?
       <> 
-      <UserInfo user={currentUser} handleLogout={handleLogout} data={users} openModal={modal} modal={profilePreview}/>
+      <UserInfo user={currentUser} handleLogout={handleLogout} data={users} openModal={modal} modal={profilePreview} delete={handleDelete}/>
 
       {/* when user is logged in  */}
       </>
@@ -149,7 +144,7 @@ function App() {
 
                   {viewEditModal === user.id &&
                   <EditProfile user={currentUser} onClose={() => setViewEditModal(false)}
-                    viewEditModal={viewEditModal}/>
+                    viewEditModal={viewEditModal} handleDelete={handleDelete}/>
                   }
 
                   <h4>{user.username}</h4>

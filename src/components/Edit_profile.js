@@ -6,15 +6,18 @@ const EditProfile = (props)=>{
     const handleChange  = (event) =>{
         setUser({ ...user, [event.target.name]: event.target.value})
     }
-    console.log(user)
     const handleSubmit = (event) =>{
+        user.id = props.user.id
+        user.username = props.user.username
+        user.password = props.user.password
         event.preventDefault()
-
         console.log(user)
         props.handleUpdate(user)
+        props.onClose()
+        event.currentTarget.reset()
     }
-    const handleDelete = () =>{
-      props.handleDelete(user)
+    const deleteUser = () =>{
+      props.handleDelete(props.user)
     }
     return(
         <>
@@ -38,6 +41,10 @@ const EditProfile = (props)=>{
                 <div className="edit-form-row">
                   <p htmlFor="fav_console">Favorite Console </p>
                   <input type="text" name="fav_console" onChange={handleChange} placeholder={props.user.fav_console}/>
+                </div>
+                <div className="edit-form-row">
+                  <p htmlFor="location">Location </p>
+                  <input type="text" name="location" onChange={handleChange} placeholder={props.user.location}/>
                 </div>
                 <div>
                   <button className="sub-edit"type="submit">Submit Changes</button>

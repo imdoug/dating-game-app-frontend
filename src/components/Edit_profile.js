@@ -1,6 +1,4 @@
 import React,{useState} from "react"
-// import Game from './Games'
-
 
 const EditProfile = (props)=>{
     let  emptyUser = { ...props.user}
@@ -11,6 +9,7 @@ const EditProfile = (props)=>{
     console.log(user)
     const handleSubmit = (event) =>{
         event.preventDefault()
+
         console.log(user)
         props.handleUpdate(user)
     }

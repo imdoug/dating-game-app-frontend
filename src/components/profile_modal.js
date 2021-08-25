@@ -14,7 +14,8 @@ const Profile = (props) => {
                                     <div className="btn-right"><i class="fa">&#xf10c;</i></div>
                                 </div>
                                 <h3>{props.data.name}, {props.data.age}</h3>
-                                <p><span>New York, NY</span></p>
+                                <p><span>{props.data.location}</span></p>
+                                {/* map over fav games  */}
                             </div>
                         </div>
                     </div>

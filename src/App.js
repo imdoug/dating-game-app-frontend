@@ -6,25 +6,40 @@ import Login from './components/Login'
 import Profile from "./components/profile_modal"
 // import Edit from "./components/Edit_modal"
 import UserInfo from './components/User-card'
-import Modal from './components/Modal'
+import Game from "./components/Games"
+import UserProfile from './components/User_profile'
+// import NewProfile from './components/Create_profile'
 
 function App() {
   let [users, setUsers] = useState([])
   let [currentUser, setCurrentUser] = useState({})
+  let [games, setGames] = useState([])
+  // let [profile, setCurrentProfile] = useState([])
   //modal states
   const [viewProfileModal, setViewProfileModal] = useState('')
   const [viewEditModal, setViewEditModal] = useState('')
+  const [viewGamesModal, setViewGamesModal] = useState('')
 
   //Its working
   const getUsers = ()=>{
     console.log('users came here')
       axios
-      .get('http://localhost:8000/api/useraccount')
+      .get('https://datinggameapp.herokuapp.com/api/useraccount')
       .then((response)=> setUsers(response.data),
       (err) => console.error(err)
       )
       .catch((error)=> console.error(error))
   }
+
+  const getGames = () => {
+    console.log('games stuff')
+      axios
+        .get('https://datinggameapp.herokuapp.com/api/games')
+        .then((response) => setGames(response.data),
+        (error) => console.error(error))
+        .catch((error) => console.error(error))
+  }
+
   useEffect(()=>{
     //creating a getting the local storage information after a refresh
     const data = localStorage.getItem("current-user")
@@ -34,7 +49,10 @@ function App() {
       setCurrentUser(JSON.parse(data))
     }
     getUsers()
+    getGames()
   },[])
+
+
   // local storage
   useEffect(()=>{
     //creating a local storage item where we'll receive our user data after a login
@@ -45,7 +63,7 @@ function App() {
   const handleCreate = (user) =>{
     console.log(user)
     axios
-      .post('http://localhost:8000/api/useraccount', user)
+      .post('https://datinggameapp.herokuapp.com/api/useraccount', user)
       .then((response)=>{
         console.log('im coming back')
         console.log(response)
@@ -74,7 +92,7 @@ function App() {
   //its working
   const handleDelete = (user)=>{
     axios
-      .delete('http://localhost:8000/api/useraccount/' + user.id)
+      .delete('https://datinggameapp.herokuapp.com/useraccount/' + user.id)
       .then((response)=>{
         console.log(response)
         getUsers()
@@ -84,7 +102,7 @@ function App() {
     event.preventDefault()
     axios
 
-      .put('http://localhost:8000/api/useraccount/login', user)
+      .put('https://datinggameapp.herokuapp.com/api/useraccount/login', user)
       .then((response)=>{
         setCurrentUser(response.data)
         console.log(response.data)
@@ -112,6 +130,7 @@ function App() {
       ?
       <> 
       <UserInfo user={currentUser} handleLogout={handleLogout} data={users} openModal={modal} modal={profilePreview}/>
+
       {/* when user is logged in  */}
       </>
       :
@@ -123,6 +142,7 @@ function App() {
           return(
             <>
                 <div className="user-card">
+
 
                   <Profile data={user} onClose={() => setViewProfileModal(false)}
                     viewProfileModal={viewProfileModal}/>
@@ -152,7 +172,6 @@ function App() {
     {
       <EditProfile user={currentUser} onClose={modal}  handleUpdate={handleUpdate}/>
     }
-    <Modal/>
     </>
   )
 }

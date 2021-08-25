@@ -7,7 +7,7 @@ const Profile = (props) => {
         <div className="profile-modal-box hidden" onClick={props.onClose}>
           <div className="profile-modal-content2" onClick={event => event.stopPropagation()}>
           <div className="carousel2">
-                        <div className="card-pic2" style={{backgroundImage: props.data.image}}>
+                        <div className="card-pic2" style={{backgroundImage: `${props.data.image}`}}>
                             <div className="user-info">
                                 <div className="btns">
                                     <div className="btn-left"><i class="fa fa-close"></i></div>

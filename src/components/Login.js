@@ -8,7 +8,6 @@ const Login = (props) =>{
     }
     const handleSubmit = (event) =>{
         event.preventDefault()
-        console.log(user)
         props.handleLogin(event, user)
     }
 
@@ -16,7 +15,6 @@ const Login = (props) =>{
         <>
         <h3 className="h3">LOGIN</h3>
         <form  onSubmit={handleSubmit}>
-
                 <div id="log" className="login-form">
 
                     <div className="row">

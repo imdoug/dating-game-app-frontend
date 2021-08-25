@@ -10,27 +10,37 @@ const EditProfile = (props)=>{
         event.preventDefault()
         console.log(profile)
         props.handleUpdate(profile)
+        props.onClose()
     }
     return(
         <>
-        <details>
-        <summary>Edit Profile Form</summary>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="image">Image: </label>
-            <input type="url" name="image" onChange={handleChange}/>
-          <br />
-            <label htmlFor="name">Name: </label>
-            <input type="text" name="name" onChange={handleChange}/>
-          <br />
-            <label htmlFor="age">Age: </label>
-            <input type="text" name="age" onChange={handleChange}/>
-          <br />
-            <label htmlFor="fav_console">Favorite Console: </label>
-            <input type="text" name="fav_console" onChange={handleChange}/>
-          <br />
-            <input type="submit" value="Edit Profile"/>
-          </form>
-        </details>
+
+        <h2>Edit Profile Form</h2>
+          <div className="edit-modal-box" onClick={props.onClose}>
+            <div className="edit-modal-content" onClick={event => event.stopPropagation()}>
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="image">Image: </label>
+                <input type="url" name="image" onChange={handleChange}/>
+              <br />
+                <label htmlFor="name">Name: </label>
+                <input type="text" name="name" onChange={handleChange}/>
+              <br />
+                <label htmlFor="age">Age: </label>
+                <input type="text" name="age" onChange={handleChange}/>
+              <br />
+                <label htmlFor="location">Location: </label>
+                <input type="text" name="location" onChange={handleChange}/>
+              <br />
+                <label htmlFor="fav_console">Favorite Console: </label>
+                <input type="text" name="fav_console" onChange={handleChange}/>
+              <br />
+                <button type="submit" value="Edit Profile">Submit Changes</button>
+              </form>
+              <div className="profile-modal-footer">
+                <button onClick={props.onClose} className="buttons">Close</button>
+              </div>
+            </div>
+          </div>
         </>
     )
 }

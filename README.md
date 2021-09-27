@@ -1,5 +1,7 @@
 # 🎮  GAME ON
 
+![](game-on.png)
+
 initially was a dating web application where gamers could meet and fall in love for each other bsaed on their favorite console and game but after a deeper research re realized that most gamers don't really go out to pubs and restaurants on dates, do instead of making it straight to the relationship this application was build so gamers could meet other games from diferent parts of the world, build a friendship playing games together and maybe let them to fell in love after playing for some time together. 
 
 this project is was divided in 3 sections *Users*, *Friend-list*, and *private chat*

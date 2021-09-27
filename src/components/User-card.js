@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 const UserInfo = (props)=>{
     let  emptyProfile = {...props.user}
     const [profile, setProfile] = useState(emptyProfile)
+    
     const handleChange  = (event) =>{
         setProfile({...profile, [event.target.name]: event.target.value})
     }
@@ -38,8 +39,8 @@ const UserInfo = (props)=>{
                                     <div className="btn-left"><i class="fa fa-close"></i></div>
                                     <div className="btn-right"><i class="fa">&#xf10c;</i></div>
                                 </div>
-                                <h3>{props.user.name}, {props.user.age}</h3>
-                                <p><span>{props.user.location}</span></p>
+                                <h3>Name, Age</h3>
+                                <p><span>State</span></p>
                             </div>
 
                         </div>

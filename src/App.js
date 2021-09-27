@@ -28,6 +28,7 @@ function App() {
       (err) => console.error(err)
       )
       .catch((error)=> console.error(error))
+      console.log(users)
   }
 
   const getGames = () => {
@@ -50,7 +51,6 @@ function App() {
     getUsers()
     getGames()
   },[])
-
 
   // local storage
   useEffect(()=>{

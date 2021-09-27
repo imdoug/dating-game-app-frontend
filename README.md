@@ -10,7 +10,8 @@ this project is was divided in 3 sections Users, Friend-list, and private cha
 - Users can sign up and sign in
 - Users can Edit their account (and add extra information and a profile picture)
 - Users can delete their account
-- 
+
+
 features not yet fully functioning
 
 #### Friend-list

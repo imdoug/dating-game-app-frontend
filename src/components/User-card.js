@@ -21,9 +21,6 @@ const UserInfo = (props)=>{
     const openProfile = () =>{
         document.querySelector('.modal-box').classList.toggle('hidden')
     }
-    const deleteUser= ()=>{
-
-    }
     return(
         <>
         <div className="profile-master">

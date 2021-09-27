@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# 🎮  GAME ON
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+initially was a dating web application where gamers could meet and fall in love for each other bsaed on their favorite console and game but after a deeper research re realized that most gamers don't really go out to pubs and restaurants on dates, do instead of making it straight to the relationship this application was build so gamers could meet other games from diferent parts of the world, build a friendship playing games together and maybe let them to fell in love after playing for some time together. 
 
-## Available Scripts
+this project is was divided in 3 sections *Users*, *Friend-list*, and *private chat*
 
-In the project directory, you can run:
+### Users 
 
-### `npm start`
+- Users can sign up and sign in 
+- Users can Edit their account (and add extra inforamtion and a profile picture)
+- Users can delete their account 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+features not yet fully fucntioning 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Friend-list 
 
-### `npm test`
+- Users can invite other users to be their friend
+- The receiver has the option to decline or accept the envite 
+- Users have the option to cancel a invitation they made 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Private Chat 
 
-### `npm run build`
+ - Users can Chat privately with users they are friends with on a live chat basis
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*the styling of the users card will be displayed as a tinder-like carousel where users will initially only see the users that match with their fav console, and they will have an option to change to other consoles on a filter, because most gamers have multiple consoles.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+live project : https://date-a-gamer.herokuapp.com/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

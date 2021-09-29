@@ -1,6 +1,6 @@
 # 🎮  GAME ON
 
-initially was a dating web application where gamers could meet and fall in love for each other bsaed on their favorite console and game but after a deeper research re realized that most gamers don't really go out to pubs and restaurants on dates, do instead of making it straight to the relationship this application was build so gamers could meet other games from diferent parts of the world, build a friendship playing games together and maybe let them to fell in love after playing for some time together. 
+initially was a dating web application where gamers could meet and fall in love for each other based on their favorite console and game but after a deeper research re realized that most gamers don't really go out to pubs and restaurants on dates, so instead of making it straight to the relationship this application was build so gamers could meet other gamers from diferent parts of the world, build a friendship playing games together and maybe this will let to something bigger after playing for a while together. 
 
 this project is was divided in 3 sections *Users*, *Friend-list*, and *private chat*
 
